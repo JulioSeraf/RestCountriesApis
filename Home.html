@@ -9,23 +9,29 @@
 </head>
 <body>
     <header>
-        <h1>Where in the Word</h1>
+        <h1>Where in the world?</h1>
         <button>Dark Mode</button>
     </header>
     <main>
         <nav>
-            <input  type="search" id="search" placeholder="Search for a country...">
-            <input list="regions" type="text" placeholder="Filter by Region">
+            <input class="search"  type="search" id="search" placeholder="Search for a country..." autocomplete="off">
+            <input class="filter" list="regions" type="text" placeholder="Filter by Region">
             <datalist id="regions">
+                <option value="oo"></option>
             </datalist>
         </nav>
-        <section>
+        <section id="flags-section">
         </section>
         <template id="flags">
-            <img id="flag-img">
-            <div id="info-pricipal">
-                <h3 id="flag-name"></h3>
-            </div>
+            <article id="flag">
+                <img id="flag-img" >
+                <div id="info-principal">
+                    <h3 id="flag-name"></h3>
+                    <p >Population: <span id="flag-population"></span></p>
+                    <p>Region: <span id="flag-region"></span></p>
+                    <p>Capital: <span id="flag-capital"></span></p>
+                </div>
+            </article>
         </template>
     </main>
     <footer>
