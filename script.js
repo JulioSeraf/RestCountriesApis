@@ -1,7 +1,17 @@
 const d = document,
     $fragmaneto = d.createDocumentFragment(),
     $template = d.getElementById('flags').content,
-    $flagSection = d.getElementById("flags-section");
+    $flagSection = d.getElementById("flags-section"),
+    $inputFilter = d.querySelector(".filter"),
+    $inputSearch = d.querySelector(".search");
+
+const themes = ()=>{
+    let $butTheme = d.getElementById("theme");
+    $butTheme.addEventListener("click",(e)=>{
+        d.body.classList.toggle("bodyDark");
+        d.querySelector("header").classList.toggle("headerDark");
+    });
+};
 
 const dataPeticion = async () => {
     const error = d.createElement('h1');
@@ -19,13 +29,13 @@ const dataPeticion = async () => {
         let {name,nativeName, population,region,subregion,capital,topLevelDomain,currencies,languages,alpha3Code
         } = el;
 
-        $template.getElementById('flag-img').src = el.flags.svg;
-        $template.getElementById('flag-img').alt = el.name;
-        $template.getElementById('flag-name').innerHTML = el.name;
-        $template.getElementById('flag-name').innerHTML = el.name;
-        $template.getElementById("flag-population").textContent = el.population;
-        $template.getElementById("flag-region").textContent = el.region;
-        $template.getElementById("flag-capital").textContent = el.capital;
+        $template.querySelector('.flag-img').src = el.flags.svg;
+        $template.querySelector('.flag-img').alt = el.name;
+        $template.querySelector('.flag-name').innerHTML = el.name;
+        $template.querySelector('.flag-name').innerHTML = el.name;
+        $template.querySelector(".flag-population").textContent = el.population;
+        $template.querySelector(".flag-region").textContent = el.region;
+        $template.querySelector(".flag-capital").textContent = el.capital;
 
         let $clone = d.importNode($template,true);
         $fragmaneto.appendChild($clone);
@@ -46,7 +56,18 @@ const dataPeticion = async () => {
    }
 };
 
+const filtroRegion = ()=>{
+   let flag = d.querySelectorAll(".flag");
+   flag.forEach((el)=> console.log(el.querySelectorAll(".flag-region").value))
+}
+d.addEventListener("keyup",(e)=>{
+   filtroRegion()
+})
+d.addEventListener("DOMContentLoaded",()=>{
+    dataPeticion();
+    themes();
+})
+ 
 
-dataPeticion()
 
 

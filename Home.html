@@ -7,29 +7,33 @@
     <link rel="stylesheet" href="Home.css">
     <title>Rest Countries API</title>
 </head>
-<body>
-    <header>
+<body class="bodyDark">
+    <header class="headerDark">
         <h1>Where in the world?</h1>
-        <button>Dark Mode</button>
+        <button id="theme">Dark Mode</button>
     </header>
     <main>
         <nav>
             <input class="search"  type="search" id="search" placeholder="Search for a country..." autocomplete="off">
             <input class="filter" list="regions" type="text" placeholder="Filter by Region">
             <datalist id="regions">
-                <option value="oo"></option>
+                <option value="Africa"></option>
+                <option value="America"></option>
+                <option value="Asia"></option>
+                <option value="Europa"></option>
+                <option value="Oceania"></option>
             </datalist>
         </nav>
         <section id="flags-section">
         </section>
         <template id="flags">
-            <article id="flag">
-                <img id="flag-img" >
-                <div id="info-principal">
-                    <h3 id="flag-name"></h3>
-                    <p >Population: <span id="flag-population"></span></p>
-                    <p>Region: <span id="flag-region"></span></p>
-                    <p>Capital: <span id="flag-capital"></span></p>
+            <article class="flag">
+                <img class="flag-img" >
+                <div class="info-principal">
+                    <h3 class="flag-name"></h3>
+                    <p >Population: <span class="flag-population"></span></p>
+                    <p>Region: <span class="flag-region"></span></p>
+                    <p>Capital: <span class="flag-capital"></span></p>
                 </div>
             </article>
         </template>
