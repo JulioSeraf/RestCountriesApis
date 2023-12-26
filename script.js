@@ -1,3 +1,5 @@
+
+
 const d = document,
     $fragmaneto = d.createDocumentFragment(),
     $template = d.getElementById('flags').content,
@@ -5,13 +7,13 @@ const d = document,
     $inputFilter = d.querySelector(".filter"),
     $inputSearch = d.querySelector(".search");
 
-const themes = ()=>{
-    let $butTheme = d.getElementById("theme");
-    $butTheme.addEventListener("click",(e)=>{
-        d.body.classList.toggle("bodyDark");
-        d.querySelector("header").classList.toggle("headerDark");
-    });
-};
+    function themes(){
+        let $butTheme = d.querySelector(".theme");
+        $butTheme.addEventListener("click",(e)=>{
+            d.body.classList.toggle("bodyDark");
+            d.querySelector("header").classList.toggle("headerDark");
+        });
+     };
 
 const flags = (el)=>{
         $template.querySelector('.flag-img').src = el.flags.svg;
@@ -21,23 +23,26 @@ const flags = (el)=>{
         $template.querySelector(".flag-population").textContent = el.population;
         $template.querySelector(".flag-region").textContent = el.region;
         $template.querySelector(".flag-capital").textContent = el.capital;
+        $template.querySelector(".flag").id = el.alpha3Code
+        ;
+
 
         let $clone = d.importNode($template,true);
         $fragmaneto.appendChild($clone);
 }
 
 const filtroSearch =(json)=>{
-    // console.log(json)
+    console.log(json)
     $inputSearch.addEventListener("input",(e)=>{
         let nameSearch = e.target.value.toLowerCase()
         json.forEach(el => {
-            if(nameSearch.indexOf(el.name.toLowerCase()) != -1){
-                console.log($inputSearch.value)
-                flags(el)
-            }
-        })
-    })
-}
+            if( nameSearch === el.name.toLowerCase() || 
+            el.name.toLowerCase().includes(nameSearch)){
+                flags(el);
+            };
+        });
+    });
+};
 
 const filtroRegion = (json)=>{
     d.addEventListener("keyup",(e)=>{
@@ -55,6 +60,17 @@ const filtroRegion = (json)=>{
     });
  };
 
+ const CompletInfoPage = (json)=>{
+    $flagSection.querySelectorAll(".flag").forEach(el =>{
+        el.addEventListener("click",(e)=>{
+            json.forEach(flag => {
+                if(flag.alpha3Code === el.id){
+                   
+                };
+            });
+        });
+    });
+ };
 const dataPeticion = async () => {
     const error = d.createElement('h1');
    try{
@@ -66,27 +82,30 @@ const dataPeticion = async () => {
     };
 
     let json = await res.json();
-
-    json.forEach(el => flags(el));
+    // console.log(json)
+    json.forEach(el => { flags(el)});
 
     filtroRegion(json);
     filtroSearch(json);
 
     $flagSection.appendChild($fragmaneto);
+    
+   CompletInfoPage(json);
 
    }catch(err){
         console.error(err);
         error.innerHTML = err;
         error.classList.add("error");
         d.querySelector('main').appendChild(error)
-   }
+   };
 };
 
 // console.log(dataPeticion())
 d.addEventListener("DOMContentLoaded",()=>{
     dataPeticion();
     themes();
-})
+
+});
  
 
 
