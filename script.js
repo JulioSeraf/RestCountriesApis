@@ -26,18 +26,30 @@ const flags = (el)=>{
         $fragmaneto.appendChild($clone);
 }
 
+const filtroSearch =(json)=>{
+    // console.log(json)
+    $inputSearch.addEventListener("input",(e)=>{
+        let nameSearch = e.target.value.toLowerCase()
+        json.forEach(el => {
+            if(nameSearch.indexOf(el.name.toLowerCase()) != -1){
+                console.log($inputSearch.value)
+                flags(el)
+            }
+        })
+    })
+}
+
 const filtroRegion = (json)=>{
     d.addEventListener("keyup",(e)=>{
         $flagSection.innerHTML = "";
         // console.log($inputSearch.value)
        json.forEach(el =>{
-            let search = el.name.toLowerCase().match(new RegExp($inputSearch.value, "gi"));
-            if(e.key === 'Escape') $inputFilter.value = '';
+            if(e.key === 'Escape') $inputFilter.value = null;
+            console.log(e.key)
 
-            if(el.region.toLowerCase().includes($inputFilter.value.toLowerCase())) flags(el);
-            
-            if(el.name.toLowerCase() === $inputSearch.value.toLowerCase()) flags(el)
-            
+            if(el.region.toLowerCase().includes($inputFilter.value.toLowerCase())){ 
+                flags(el)
+            }
         });
         $flagSection.appendChild($fragmaneto);
     });
@@ -58,6 +70,7 @@ const dataPeticion = async () => {
     json.forEach(el => flags(el));
 
     filtroRegion(json);
+    filtroSearch(json);
 
     $flagSection.appendChild($fragmaneto);
 
@@ -69,7 +82,7 @@ const dataPeticion = async () => {
    }
 };
 
-console.log(dataPeticion())
+// console.log(dataPeticion())
 d.addEventListener("DOMContentLoaded",()=>{
     dataPeticion();
     themes();
