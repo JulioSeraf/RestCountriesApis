@@ -25,6 +25,20 @@ const flags = (el)=>{
     
         let $clone = d.importNode($template,true);
         $fragmaneto.appendChild($clone);
+};
+
+const infoCountry = (json)=>{
+    $flagSection.querySelectorAll(".flag").forEach(flag => {
+        flag.addEventListener("click",()=>{
+            json.forEach(el => {
+                if(el.alpha3Code === flag.id){
+                    localStorage.setItem("flag",JSON.stringify(el));
+                    location.href = "Detail.html";
+                    // window.open("Detail.html","_blank");
+                };
+            });
+        });
+    });
 }
 
 const filtroSearch =(json)=>{
@@ -43,16 +57,13 @@ const filtroSearch =(json)=>{
 const filtroRegion = (json)=>{
     d.addEventListener("keyup",(e)=>{
         $flagSection.innerHTML = "";
-        // console.log($inputSearch.value)
        json.forEach(el =>{
             if(e.key === 'Escape') $inputFilter.value = null;
-            // console.log(e.key);
 
-            if(el.region.toLowerCase().includes($inputFilter.value.toLowerCase())){ 
-                flags(el);
-            };
+            if(el.region.toLowerCase().includes($inputFilter.value.toLowerCase())) flags(el);
         });
         $flagSection.appendChild($fragmaneto);
+        infoCountry(json);
     });
  };
 
@@ -60,34 +71,24 @@ const filtroRegion = (json)=>{
 
 const dataPeticion = async () => {
     const error = d.createElement('h1');
-   try{
-    let data = `data.json`;
-    let res = await fetch(data);
+    try{
+        let data = `data.json`;
+        let res = await fetch(data);
 
-    if(!res.ok){
-        throw new Error("Ocurrión un Error en la Petición");
-    };
+        if(!res.ok){
+            throw new Error("Ocurrión un Error en la Petición");
+        };
 
-    let json = await res.json();
-    // console.log(json)
-    json.forEach(el => {
-        flags(el);
-    });
-    filtroRegion(json);
-    filtroSearch(json);
-    $flagSection.appendChild($fragmaneto);
-
-    $flagSection.querySelectorAll(".flag").forEach(flag => {
-        flag.addEventListener("click",()=>{
-            json.forEach(el => {
-                if(el.alpha3Code === flag.id){
-                    localStorage.setItem("flag",JSON.stringify(el));
-                    window.open("Detail.html","_blank");
-                };
-            });
+        let json = await res.json();
+        // console.log(json)
+        json.forEach(el => {
+            flags(el);
         });
-    });
-   }catch(err){
+        filtroRegion(json);
+        filtroSearch(json);
+        $flagSection.appendChild($fragmaneto);
+        infoCountry(json);
+    }catch(err){
         console.error(err);
         error.innerHTML = err;
         error.classList.add("error");
