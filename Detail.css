@@ -2,3 +2,15 @@ html{
     font-size: 14px;
 }
 
+nav{
+    position: relative;
+    height: 20vh;
+}
+nav button{
+    position: absolute;
+    left: 2%;
+    top: 50%;
+}
+section{
+    display: flex;
+}
