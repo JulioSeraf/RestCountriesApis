@@ -6,7 +6,7 @@ const d = document,
     $inputSearch = d.querySelector(".search");
     
 
-function themes(){
+export function themes(){
     let $butTheme = d.querySelector(".theme");
     $butTheme.addEventListener("click",(e)=>{
         d.body.classList.toggle("bodyDark");
@@ -21,9 +21,8 @@ const flags = (el)=>{
         $template.querySelector(".flag-population").innerHTML = el.population;
         $template.querySelector(".flag-region").innerHTML = el.region;
         $template.querySelector(".flag-capital").innerHTML = el.capital;
-        $template.querySelector(".flag").id = el.alpha3Code
-        ;
-
+        $template.querySelector(".flag").id = el.alpha3Code;
+    
         let $clone = d.importNode($template,true);
         $fragmaneto.appendChild($clone);
 }
@@ -47,7 +46,7 @@ const filtroRegion = (json)=>{
         // console.log($inputSearch.value)
        json.forEach(el =>{
             if(e.key === 'Escape') $inputFilter.value = null;
-            console.log(e.key);
+            // console.log(e.key);
 
             if(el.region.toLowerCase().includes($inputFilter.value.toLowerCase())){ 
                 flags(el);
@@ -82,7 +81,8 @@ const dataPeticion = async () => {
         flag.addEventListener("click",()=>{
             json.forEach(el => {
                 if(el.alpha3Code === flag.id){
-                
+                    localStorage.setItem("flag",JSON.stringify(el));
+                    window.open("Detail.html","_blank");
                 };
             });
         });

@@ -14,3 +14,6 @@ nav button{
 section{
     display: flex;
 }
+img{
+    width: 30%;
+}
