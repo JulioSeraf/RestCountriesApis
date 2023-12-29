@@ -6,7 +6,7 @@ const d = document,
     $inputSearch = d.querySelector(".search");
     
 
-export function themes(){
+export default function themes(){
     let $butTheme = d.querySelector(".theme");
     $butTheme.addEventListener("click",(e)=>{
         d.body.classList.toggle("bodyDark");

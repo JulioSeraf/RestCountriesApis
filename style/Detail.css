@@ -15,32 +15,67 @@ nav button{
 }
 section{
     display: flex;
-    height: 60vh;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 0 20px;
 }
-.picture{
-    width: 50%;
+.picture-div{
+   display: flex;
+   width: 50%;
+   min-width: 350px;
 }
-img{
-    display: block;
-    width: 80%;
-    min-width: 350px;
+picture{
     margin: auto;
+    width: 500px;
+    min-width: 350px;
+    height:350px;
+}
+
+.flag-img{
+    width: 100%;
+    height: 100%;
     border-radius: 3px;
     box-shadow: 0px 0px 3px black;
+    object-fit: auto;
 }
 .info{
     width: 50%;
     display: grid;
-    padding: 30px 0;
+    padding: 30px;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+}
+@media screen and (max-width:740px) {
+    picture{
+        margin: auto;
+        width: 80%;
+        min-width: 80%;
+        height:250px;
+    }
+    .info{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        justify-content: start;
+        align-items: start;
+        border: 1px solid;
+    }
+    .info-principal{
+        margin: 0;
+        padding: 0;
+        border: 1px solid;
+    }
+    .info-segundaria{
+        border: 1px solid;
+    }
 }
 .title{
     grid-column: 1/3;
     font-size: 1.6em;
 }
-
+.info-principal{
+    margin: 0 15px;
+}
 .info-principal span{
     color: gray;
     font-weight: 300;

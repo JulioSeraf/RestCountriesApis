@@ -1,4 +1,4 @@
-
+import themes from "./script.js";
 const d = document,
     flag = JSON.parse(localStorage.getItem("flag")),
     $template = d.getElementById("flags").content,
