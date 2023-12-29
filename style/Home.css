@@ -41,9 +41,13 @@ section{
    transition: 1s;
    cursor: pointer;
 }
-.flag-img{
-    width: 100%;
+.flag-imgDiv{
     height: 50%;
+}
+.flag-img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 

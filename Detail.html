@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/style-root.css">
     <link rel="stylesheet" href="/style/Detail.css">
+    <link rel="icon" href="https://fontawesome.com/icons/arrow-left?f=classic&s=solid" type="icon">
     <title>Rest Countries Apis</title>
 </head>
-<body class="bodyDark">
-    <header class="headerDark" >
+<body>
+    <header>
         <h1>Where in the Word</h1>
         <button class="theme">Dark Mode</button>
     </header>
@@ -23,8 +24,8 @@
                 <img class="flag-img">
             </picture>
             <article class="info">
-                <div class="info-pricipal">
-                    <h3 class="flag-name"></h3>
+                <div class="title"><h3 class="flag-name"></h3></div>
+                <div class="info-principal">
                     <p>Native Name: <span  class="native-name"></span></p>
                     <p>Population: <span class="flag-population"></span></p>
                     <p>Region: <span class="flag-region"></span></p>
@@ -37,7 +38,7 @@
                     <p>languages: <span class="languages"></span></p>
                 </div>
                 <div class="border-countries">
-                    <p>Border Countries:</p>
+                    <p style="margin: 0 5px;">Border Countries:</p>
                 </div>
             </article>
         </template>
