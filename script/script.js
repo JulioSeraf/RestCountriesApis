@@ -1,14 +1,18 @@
 const d = document,
     $fragmaneto = d.createDocumentFragment(),
-    $template = d.getElementById('flags').content,
+    $template = d.querySelector('.flags').content,
     $flagSection = d.getElementById("flags-section"),
     $inputFilter = d.querySelector(".filter"),
     $inputSearch = d.querySelector(".search");
     
-
-export default function themes(){
+ function themes(){
     let $butTheme = d.querySelector(".theme");
     $butTheme.addEventListener("click",(e)=>{
+        if($butTheme.textContent === "Dark Mode"){
+            $butTheme.textContent = "Ligth Mode";
+        }else{
+            $butTheme.textContent = "Dark Mode";
+        }
         d.body.classList.toggle("bodyDark");
         d.querySelector("header").classList.toggle("headerDark");
     });
@@ -34,7 +38,7 @@ const infoCountry = (json)=>{
                 if(el.alpha3Code === flag.id){
                     localStorage.setItem("flag",JSON.stringify(el));
                     location.href = "Detail.html";
-                    // window.open("Detail.html","_blank");
+                    // para abrit en otra ventana = window.open("Detail.html","_blank");
                 };
             });
         });

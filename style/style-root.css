@@ -53,8 +53,17 @@ header > button:hover{
 }
 header h1{
     margin: auto 30px auto 50px;
-    font-size: 1.3em;
+    font-size: clamp(0.8em,3.5vw,1.3em);
     font-weight: 800;
+}
+@media screen and (max-width: 390px) {
+    header h1{
+        margin: auto 0px auto 10px;
+    }
+    header > button{
+        margin: auto 10px auto 10px;
+    }
+
 }
 footer{
    width: 100%;

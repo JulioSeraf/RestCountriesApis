@@ -10,6 +10,7 @@ nav{
     align-items: center;
     height: 15vh;
 }
+
 nav > *{
     border: none;
     border-radius: 5px;
@@ -18,13 +19,14 @@ nav > *{
 }
 nav .search{
     width: 300px;
-    margin: auto 5px auto 50px;
+    margin: auto 5px;
 }
 nav .filter{
     width: 150px;
-    margin: auto 50px auto 0;
+    margin: auto 5px;
 
 }
+
 section{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(100px,200px));
@@ -65,4 +67,34 @@ section{
     color: gray;
     font-weight: 300;
 }
-
+@media screen and (min-width:765px) {
+    nav .search{
+        margin:auto 5px auto 50px;
+    }
+    nav .filter{
+        margin: auto 50px auto 5px;
+    
+    }
+}
+@media screen and (max-width: 390px) {
+    header h1{
+        margin: auto 0px auto 10px;
+    }
+    nav{
+        flex-direction: column;
+        align-content: center;
+    }
+    nav .search{
+        width: 80%;
+        margin:15px auto;
+    }
+    nav .filter{
+        width: 150px;
+        margin: none;
+    
+    }
+    
+    section{
+        margin-top: 30px;
+    }
+}

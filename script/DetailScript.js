@@ -1,10 +1,23 @@
-import themes from "./script.js";
+
 const d = document,
     flag = JSON.parse(localStorage.getItem("flag")),
-    $template = d.getElementById("flags").content,
+    $template = d.querySelector(".flags").content,
     $fragmaneto = d.createDocumentFragment(),
     $flagSection = d.querySelector("#section-flags"),
     $backButton = d.getElementById("back-button");
+
+function themes(){
+    let $butTheme = d.querySelector(".theme");
+    $butTheme.addEventListener("click",(e)=>{
+        if($butTheme.textContent === "Dark Mode"){
+            $butTheme.textContent = "Ligth Mode";
+        }else{
+            $butTheme.textContent = "Dark Mode";
+        }
+        d.body.classList.toggle("bodyDark");
+        d.querySelector("header").classList.toggle("headerDark");
+    });
+};
 
 $backButton.addEventListener("click",()=> location.href = "Home.html");
 
@@ -61,4 +74,5 @@ const BordesCountries =  async (flag)=>{
 
 d.addEventListener("DOMContentLoaded",()=>{
    BordesCountries(flag);
+   themes();
 });
