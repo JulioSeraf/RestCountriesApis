@@ -79,7 +79,7 @@ footer a{
 
 
 /* Thema Dark */
-.bodyDark{
+.bodyDark {
     background-color: var(--VeryDarkBlue);
     color: white;
 }
@@ -96,6 +96,9 @@ footer a{
 .darkFlag{
     background-color:var(--DarkBlue);
     box-shadow: 0px 0px 2px 1px var(--VeryDarkBlue2) !important;
+}
+.darkFooter{
+    color: white;
 }
 
 

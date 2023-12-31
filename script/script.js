@@ -17,6 +17,7 @@ const d = document,
         d.querySelector("header").classList.toggle("headerDark");
         d.querySelector("nav").classList.toggle("darkNav")
         $flagSection.querySelectorAll(".flag").forEach(el => el.classList.toggle("darkFlag"));
+        d.querySelector("footer").querySelector("a").classList.toggle("darkFooter");
     });
 };
 

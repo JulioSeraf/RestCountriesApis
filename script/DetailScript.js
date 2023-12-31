@@ -17,6 +17,7 @@ function themes(){
         $backButton.classList.toggle("backDark")
         d.body.classList.toggle("bodyDark");
         d.querySelector("header").classList.toggle("headerDark");
+        d.querySelector("footer").querySelector("a").classList.toggle("darkFooter");
     });
 };
 
