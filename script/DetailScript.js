@@ -10,10 +10,11 @@ function themes(){
     let $butTheme = d.querySelector(".theme");
     $butTheme.addEventListener("click",(e)=>{
         if($butTheme.textContent === "Dark Mode"){
-            $butTheme.textContent = "Ligth Mode";
+            $butTheme.innerHTML = '<i class="fas fa-moon"></i>Ligth Mode';
         }else{
-            $butTheme.textContent = "Dark Mode";
+            $butTheme.innerHTML = '<i class="fas fa-moon"></i>Dark Mode';
         }
+        $backButton.classList.toggle("backDark")
         d.body.classList.toggle("bodyDark");
         d.querySelector("header").classList.toggle("headerDark");
     });
