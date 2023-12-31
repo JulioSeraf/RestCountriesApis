@@ -46,6 +46,9 @@ header > button{
     cursor: pointer;
     transition:  1s all;
 }
+header > button i{
+    margin: 0 5px;
+}
 header > button:hover{
     border: 1px solid var(--VeryLightGray);
     
@@ -86,5 +89,16 @@ footer a{
 }
 .headerDark{
     background-color: var(--DarkBlue);
-    box-shadow: 1px 1px 1px black;
+    box-shadow: 0px 0px 2px 1px var(--VeryDarkBlue2);
 }
+.darkNav > input {
+    color: white;
+    /* color-interpolation-filters: inherit; */
+    background-color:var(--DarkBlue);
+    box-shadow: 0px 0px 2px 1px var(--VeryDarkBlue2);
+}
+.darkFlag{
+    background-color:var(--DarkBlue);
+    box-shadow: 0px 0px 2px 1px var(--VeryDarkBlue2) !important;
+}
+
