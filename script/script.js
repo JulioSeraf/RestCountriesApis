@@ -25,7 +25,7 @@ const flags = (el)=>{
         $template.querySelector('.flag-img').src = el.flags.svg;
         $template.querySelector('.flag-img').alt = el.name;
         $template.querySelector('.flag-name').innerHTML = el.name;
-        $template.querySelector(".flag-population").innerHTML = el.population;
+        $template.querySelector(".flag-population").textContent = el.population
         $template.querySelector(".flag-region").innerHTML = el.region;
         $template.querySelector(".flag-capital").innerHTML = el.capital;
         $template.querySelector(".flag").id = el.alpha3Code;
